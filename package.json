@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "browserify": "^10.0.0",
+    "flux": "^2.0.3",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-less": "^3.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "material-ui": "^0.7.5",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.2",
+    "react-tap-event-plugin": "^0.1.6",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
