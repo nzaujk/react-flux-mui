@@ -16,7 +16,7 @@ var LeftNavComponent = React.createClass({
       <div className="left-nav-example">
       <RaisedButton label="Toggle Docked Left Nav"/>
     <RaisedButton label="Toggle Docked Left Nav" onClick={this._toggle}/>
-    <LeftNav ref="nav" docked={true} menuItems={menuItems} />
+    <LeftNav ref="nav" docked={false} menuItems={menuItems} />
     </div>
     );
   },

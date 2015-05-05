@@ -2,6 +2,7 @@
   "devDependencies": {
     "babelify": "^6.0.2",
     "browserify": "^10.0.0",
+    "firebase": "^2.2.4",
     "flux": "^2.0.3",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",

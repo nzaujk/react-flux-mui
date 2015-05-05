@@ -2,20 +2,21 @@ var React = require('react');
 var mui = require('material-ui');
 var AppStore = require('./stores/AppStore.js');
 var AppActions = require('./actions/AppActions');
-  
+var RaisedButton = mui.RaisedButton;   
 var NavComponent = require('./components/NavComponent');
 var LeftNavComponent = require('./components/LeftNavComponent');
- 
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
- 
+var TextComponent = require('./components/TextComponent');
 
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin(); 
+    
+   
 function getAppState() {
-  return { 
+  return {  
     docked: AppStore.getAppState()
   };
-}
- 
+}   
+   
 var DockComponent = React.createClass({
   getInitialState: function() {
     return getAppState();
@@ -26,10 +27,12 @@ var DockComponent = React.createClass({
   componentWillUnmount: function() {
     AppStore.removeChangeListener(this._onChange);
   },
-  render: function() {  
+  render: function() {
     return (
       <div>
-
+     <p> {this.state.docked} </p>
+      <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/>
+      <p>hello </p>
       </div> 
      );
   },
@@ -37,7 +40,7 @@ var DockComponent = React.createClass({
     this.setState(getAppState());
   },
    _onDestroyClick: function() {
-    this.refs.nav.toggle();
+    AppActions.toggleNav();
   }
 });
 
@@ -48,6 +51,8 @@ var Main = React.createClass({
       <div>
         <NavComponent />
        <LeftNavComponent />
+        <TextComponent />
+      <DockComponent />
       </div> 
     ); 
   }    

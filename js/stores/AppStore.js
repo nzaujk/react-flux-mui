@@ -1,10 +1,23 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
+var Firebase = require('firebase')
 var AppConstants = require('../constants/AppConstants');
 var assign = require('object-assign');
 
-var NavState = false;
+var tweet = [];
 var CHANGE_EVENT = 'change';  
+
+var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
+firebaseRef.child("tweets").on("value", function(snapshot) {
+  tweet.push(snapshot.val());  // Alerts "San Francisco"
+});
+
+function toggleFire() {
+  firebaseRef.child("tweets").on("value", function(snapshot) {
+  tweet.push(snapshot.val());  // Alerts "San Francisco"
+});
+  return tweet;
+}
 
 function toggleNav() {
   var docked = ((NavState === true) ? false : true);
@@ -15,7 +28,7 @@ function toggleNav() {
 var AppStore = assign({}, EventEmitter.prototype, {
     
   getAppState: function() {
-    return NavState;
+    return tweet;
   },
   
   emitChange: function() {
@@ -41,7 +54,7 @@ AppDispatcher.register(function(action) {
 
   switch(action.actionType) {
     case AppConstants.NAV_DOCK:
-      toggleNav();
+      toggleFire();
       AppStore.emitChange();
       break;
 
