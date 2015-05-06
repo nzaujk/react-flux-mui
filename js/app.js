@@ -9,7 +9,7 @@ var NavComponent = require('./components/NavComponent');
 var LeftNavComponent = require('./components/LeftNavComponent');
 var TextComponent = require('./components/TextComponent');
 var TweetComponent = require('./components/TweetComponent');
-
+var ServerCall = require('./actions/ServerActions');
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin(); 
 
@@ -25,13 +25,15 @@ var Main = React.createClass({
   }, 
   componentDidMount: function() {
     AppStore.addChangeListener(this._onChange);
-
-    var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
-    firebaseRef.child("users").on("value", function(snapshot) {
-      this.setState({
-          docked: snapshot.val()
-        });
-      }.bind(this));
+    ServerCall.call();
+//    var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/users");
+//    firebaseRef.once("value", function(snapshot) {
+//      console.log(snapshot.val());
+//     
+//      this.setState({
+//          docked: snapshot.val()
+//        });
+//      }.bind(this));
   },
   componentWillUnmount: function() {
     AppStore.removeChangeListener(this._onChange);

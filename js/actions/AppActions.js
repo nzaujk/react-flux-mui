@@ -11,10 +11,10 @@ var AppActions = {
       actionType: AppConstants.NAV_DOCK
     });
   },
-  updateUsers: function(info) {
+  updateUsers: function(i) {
     AppDispatcher.dispatch({
       actionType: AppConstants.USER_INFO,
-      info: info
+      info: i
     });
   }
 };

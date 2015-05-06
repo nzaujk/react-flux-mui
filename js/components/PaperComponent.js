@@ -15,7 +15,7 @@ var PaperComponent = React.createClass({
     var tweet = this.props.thisTweet;
     return (
       <ReactCSSTransitionGroup transitionName="example">
-      <div className="row view" key={tweet.id}>
+      <div className="row view" key={tweet.time}>
       <Paper zDepth={1}>
       <p className="text-indent">{tweet.name}</p>
       </Paper>

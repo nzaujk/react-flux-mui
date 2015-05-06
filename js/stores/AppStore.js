@@ -53,6 +53,7 @@ AppDispatcher.register(function(action) {
       AppStore.emitChange();
       break;
     case AppConstants.USER_INFO:
+      console.log(info);
       toggleFire(info);
       AppStore.emitChange();
       break;
