@@ -11,7 +11,7 @@ var TextComponent = React.createClass({
     return (
       <TextField
   hintText="Hint Text" />
-    );
+    ); 
   }
 });
 

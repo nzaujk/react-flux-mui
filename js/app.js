@@ -6,36 +6,36 @@ var RaisedButton = mui.RaisedButton;
 var NavComponent = require('./components/NavComponent');
 var LeftNavComponent = require('./components/LeftNavComponent');
 var TextComponent = require('./components/TextComponent');
+var TweetComponent = require('./components/TweetComponent');
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin(); 
-    
-   
+
 function getAppState() {
-  return {  
+  return {   
     docked: AppStore.getAppState()
   };
-}   
-   
+} 
+
 var DockComponent = React.createClass({
   getInitialState: function() {
     return getAppState();
-  },
+  }, 
   componentDidMount: function() {
     AppStore.addChangeListener(this._onChange);
   },
   componentWillUnmount: function() {
     AppStore.removeChangeListener(this._onChange);
-  },
+  },      
   render: function() {
     return (
       <div>
-     <p> {this.state.docked} </p>
+     
+      <TweetComponent allTweets={this.state.docked} />
       <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/>
-      <p>hello </p>
-      </div> 
-     );
-  },
+      </div>  
+     );  
+  }, 
   _onChange: function() {
     this.setState(getAppState());
   },
@@ -43,22 +43,9 @@ var DockComponent = React.createClass({
     AppActions.toggleNav();
   }
 });
-
-
-var Main = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <NavComponent />
-       <LeftNavComponent />
-        <TextComponent />
-      <DockComponent />
-      </div> 
-    ); 
-  }    
-});     
+    
 
 React.render(
-  <Main />,
+  <DockComponent />,
   document.getElementById('content')
 );

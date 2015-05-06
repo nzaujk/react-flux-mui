@@ -6,7 +6,7 @@ var less = require('gulp-less');
 var path = require('path');
 
 var paths = {
-  scripts: 'js/*.js' 
+  scripts: ['js/*.js', 'js/*/*.js'] 
 };
 function handleError (error) {
  //If you want details of the error in the console

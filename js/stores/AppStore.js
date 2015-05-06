@@ -12,21 +12,27 @@ firebaseRef.child("tweets").on("value", function(snapshot) {
   tweet.push(snapshot.val());  // Alerts "San Francisco"
 });
 
+
+console.log(tweet);
+
 function toggleFire() {
   firebaseRef.child("tweets").on("value", function(snapshot) {
   tweet.push(snapshot.val());  // Alerts "San Francisco"
 });
+  for(var i in tweet){
+  console.log(tweet[i]);
+  }
   return tweet;
 }
 
 function toggleNav() {
   var docked = ((NavState === true) ? false : true);
-  console.log(docked);
   NavState = docked;
 }
 
 var AppStore = assign({}, EventEmitter.prototype, {
-    
+  
+
   getAppState: function() {
     return tweet;
   },
