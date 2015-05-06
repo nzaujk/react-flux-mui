@@ -14,9 +14,9 @@ var TweetComponent = React.createClass({
     var allTweets = this.props.allTweets;
     var tweets = [];
   
-    for(var key in allTweets){
-      console.log(allTweets[key]);
-      tweets.push(<PaperComponent key={key} thisTweet={allTweets[key]} />);
+    for(var i in allTweets){
+      console.log(allTweets[i]);
+      tweets.push(<PaperComponent key={i} thisTweet={allTweets[i]} />);
     }
      
     return (

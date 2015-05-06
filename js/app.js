@@ -17,7 +17,7 @@ function getAppState() {
   };
 } 
 
-var DockComponent = React.createClass({
+var Main = React.createClass({
   getInitialState: function() {
     return getAppState();
   }, 
@@ -46,6 +46,6 @@ var DockComponent = React.createClass({
     
 
 React.render(
-  <DockComponent />,
+  <Main />,
   document.getElementById('content')
 );

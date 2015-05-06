@@ -13,9 +13,9 @@ var PaperComponent = React.createClass({
   render: function() {  
     var tweet = this.props.thisTweet;
     return (
-      <li key={tweet}>
+      <li key={tweet.id}>
       <Paper zDepth={1}>
-      <p>{tweet}</p>
+      <p>{tweet.text}</p>
       </Paper>
       </li>
     )

@@ -9,18 +9,18 @@ var CHANGE_EVENT = 'change';
 
 var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
 firebaseRef.child("tweets").on("value", function(snapshot) {
-  tweet.push(snapshot.val());  // Alerts "San Francisco"
-});
+  tweet = snapshot.val()});  // Alerts "San Francisco"
 
 
+ 
 console.log(tweet);
 
 function toggleFire() {
   firebaseRef.child("tweets").on("value", function(snapshot) {
-  tweet.push(snapshot.val());  // Alerts "San Francisco"
-});
+  tweet = snapshot.val()});
+  
   for(var i in tweet){
-  console.log(tweet[i]);
+  console.log(tweet[i]); 
   }
   return tweet;
 }
