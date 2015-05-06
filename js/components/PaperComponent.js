@@ -4,6 +4,7 @@ var ReactPropTypes = React.PropTypes;
 var mui = require('material-ui');
 var Paper = mui.Paper;
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 
 var PaperComponent = React.createClass({
@@ -13,11 +14,13 @@ var PaperComponent = React.createClass({
   render: function() {  
     var tweet = this.props.thisTweet;
     return (
-      <li key={tweet.id}>
+      <ReactCSSTransitionGroup transitionName="example">
+      <div className="row view" key={tweet.id}>
       <Paper zDepth={1}>
-      <p>{tweet.text}</p>
+      <p className="text-indent">{tweet.name}</p>
       </Paper>
-      </li>
+      </div>
+      </ReactCSSTransitionGroup>
     )
   }
 });

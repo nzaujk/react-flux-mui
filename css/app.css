@@ -1,5 +1,17 @@
-.commentBox {
-  border-style: solid;
-  border-width: 2px;
-  width: 400px;
+.view{
+width: 200px;
+padding: 8px;
+}
+.text-indent{
+padding: 20px;
+margin: 0px
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
 }

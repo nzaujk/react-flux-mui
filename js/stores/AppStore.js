@@ -4,24 +4,13 @@ var Firebase = require('firebase')
 var AppConstants = require('../constants/AppConstants');
 var assign = require('object-assign');
 
-var tweet = [];
+var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
+var tweet = {};
 var CHANGE_EVENT = 'change';  
 
-var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
-firebaseRef.child("tweets").on("value", function(snapshot) {
-  tweet = snapshot.val()});  // Alerts "San Francisco"
 
-
- 
-console.log(tweet);
-
-function toggleFire() {
-  firebaseRef.child("tweets").on("value", function(snapshot) {
-  tweet = snapshot.val()});
-  
-  for(var i in tweet){
-  console.log(tweet[i]); 
-  }
+function toggleFire(info) {
+  tweet = info;
   return tweet;
 }
 
@@ -61,6 +50,10 @@ AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case AppConstants.NAV_DOCK:
       toggleFire();
+      AppStore.emitChange();
+      break;
+    case AppConstants.USER_INFO:
+      toggleFire(info);
       AppStore.emitChange();
       break;
 

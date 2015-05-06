@@ -15,16 +15,19 @@ var TweetComponent = React.createClass({
     var tweets = [];
   
     for(var i in allTweets){
-      console.log(allTweets[i]);
       tweets.push(<PaperComponent key={i} thisTweet={allTweets[i]} />);
     }
      
     return (
-      <section id="main">
-      <ul>{tweets}</ul>
-      </section>
+      <div className="row">
+      <div className="col-md-8"> </div>
+      <div className="col-md-4">
+                  {tweets}
+ 
+       </div>
+      </div>
     );
-  }
+  } 
 });
 
 

@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "babelify": "^6.0.2",
+    "bootstrap": "^3.3.4",
     "browserify": "^10.0.0",
     "firebase": "^2.2.4",
     "flux": "^2.0.3",
