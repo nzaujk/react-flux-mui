@@ -15,7 +15,8 @@ injectTapEventPlugin();
 
 function getAppState() {
   return {   
-    docked: AppStore.getAppState()
+    leaderBoard: AppStore.getLeaderBoard(),
+    newestContrib: AppStore.getnewestContrib()
   };
 } 
 
@@ -31,10 +32,10 @@ var Main = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },      
   render: function() {
-    return (
+    return ( 
       <div>
       <LeftNavComponent />
-      <TweetComponent allTweets={this.state.docked} />
+      <TweetComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} />
       <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/>
       </div>  
      );  

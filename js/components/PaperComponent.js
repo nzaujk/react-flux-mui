@@ -14,7 +14,7 @@ var PaperComponent = React.createClass({
   render: function() {  
     var tweet = this.props.thisTweet;
     return (
-      <div className="row view" key={tweet.time}>
+      <div className="row leaderBoard" key={tweet.time}>
       <Paper zDepth={1}>
       <p className="text-indent">{tweet.name}</p>
       </Paper>

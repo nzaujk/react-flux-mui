@@ -7,7 +7,9 @@ var AppConstants = require('../constants/AppConstants');
 var assign = require('object-assign');
 
 var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
-var tweet = [];
+var leaderBoard = [];
+var newestContrib = {};
+var State = {}
 var CHANGE_EVENT = 'change';  
 
 var User = Immutable.Record({
@@ -18,11 +20,16 @@ var User = Immutable.Record({
 var users = Immutable.List();
                                    
 function toggleFire(info) {
-  var cont = tweet;
+  
+  // set newest contributor
+  newestContrib = info;
+  
+  // add and sort the leaderboard
+  var cont = leaderBoard;
   cont.push(info); 
-  var sorted = _.sortBy(tweet, "name");
-  tweet = sorted;
-  return tweet 
+  var sorted = _.sortBy(cont, "name");
+  leaderBoard = sorted;
+  return leaderBoard 
 }
 
 function toggleNav() {
@@ -33,10 +40,12 @@ function toggleNav() {
 var AppStore = assign({}, EventEmitter.prototype, {
   
 
-  getAppState: function() {
-    return tweet;
+  getLeaderBoard: function() {
+    return leaderBoard;
   },
-  
+  getnewestContrib: function() {
+    return newestContrib;
+  },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
