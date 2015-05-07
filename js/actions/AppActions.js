@@ -12,9 +12,10 @@ var AppActions = {
     });
   },
   updateUsers: function(i) {
+    var info = i;
     AppDispatcher.dispatch({
       actionType: AppConstants.USER_INFO,
-      info: i
+      info: info
     });
   }
 };

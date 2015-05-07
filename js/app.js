@@ -26,14 +26,6 @@ var Main = React.createClass({
   componentDidMount: function() {
     AppStore.addChangeListener(this._onChange);
     ServerCall.call();
-//    var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/users");
-//    firebaseRef.once("value", function(snapshot) {
-//      console.log(snapshot.val());
-//     
-//      this.setState({
-//          docked: snapshot.val()
-//        });
-//      }.bind(this));
   },
   componentWillUnmount: function() {
     AppStore.removeChangeListener(this._onChange);

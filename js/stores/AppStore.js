@@ -1,17 +1,28 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
+var Immutable = require('immutable');
+var _ = require('underscore');
 var EventEmitter = require('events').EventEmitter;
 var Firebase = require('firebase')
 var AppConstants = require('../constants/AppConstants');
 var assign = require('object-assign');
 
 var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
-var tweet = {};
+var tweet = [];
 var CHANGE_EVENT = 'change';  
 
+var User = Immutable.Record({
+  time: undefined,
+  name: undefined
+});
 
+var users = Immutable.List();
+                                   
 function toggleFire(info) {
-  tweet = info;
-  return tweet;
+  var cont = tweet;
+  cont.push(info); 
+  var sorted = _.sortBy(tweet, "name");
+  tweet = sorted;
+  return tweet 
 }
 
 function toggleNav() {
@@ -53,7 +64,8 @@ AppDispatcher.register(function(action) {
       AppStore.emitChange();
       break;
     case AppConstants.USER_INFO:
-      console.log(info);
+      var info = action.info;
+
       toggleFire(info);
       AppStore.emitChange();
       break;

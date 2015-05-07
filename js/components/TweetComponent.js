@@ -8,7 +8,7 @@ var Paper = mui.Paper;
 
 var TweetComponent = React.createClass({
   propTypes: {
-    allTweets: ReactPropTypes.object.isRequired
+    allTweets: ReactPropTypes.array.isRequired
   },
   render: function() {  
     var allTweets = this.props.allTweets;

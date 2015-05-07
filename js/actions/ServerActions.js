@@ -4,9 +4,11 @@ var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/users");
 
 var ServerCall = {
 call: function() {
-  firebaseRef.on("value", function(dataSnapshot) {
-     console.log(dataSnapshot.val());
-    AppActions.updateUsers(dataSnapshot.val());
+  firebaseRef.orderByChild("name").on("child_added", function(dataSnapshot, prev) {
+    var res = dataSnapshot.val()
+    var key = dataSnapshot.key()
+    var info = {name: dataSnapshot.val().name, time: dataSnapshot.val().time, key: dataSnapshot.key(), prevKey: prev}
+    AppActions.updateUsers(info);
 });
   }
 }
