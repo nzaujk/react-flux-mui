@@ -1,14 +1,27 @@
 .leaderBoard{
 width: 200px;
-padding: 8px;
+padding-top: 12px;
 }
 .featured{
-padding: 8px;
+word-wrap: break-word;
+text-align: center;
+padding-top: 12px;
+}
+.newestCont{
+word-wrap: break-word;
+text-align: center;
+padding-top: 12px;
+}
+.white-background{
+background-color: #fff
 }
 
+body {
+  color: #4dd0e1
+}
 .text-indent{
-padding: 20px;
-margin: 0px
+padding-left: 40px;
+margin-bottom: 5px
 }
 
 .example-enter {

@@ -14,8 +14,9 @@ var PaperComponent = React.createClass({
   render: function() {  
     var tweet = this.props.thisTweet;
     return (
-      <div className="row leaderBoard" key={tweet.time}>
-      <Paper zDepth={1}>
+      <div className="row leaderBoard" key={tweet.key}>
+      <Paper className="white-background" zDepth={1}>
+      <h2 className="text-indent">${tweet.pledge}</h2>
       <p className="text-indent">{tweet.name}</p>
       </Paper>
       </div>

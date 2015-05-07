@@ -13,11 +13,13 @@ var NewestContributor = React.createClass({
     var contrib = this.props.thisContrib;
 
     return (
-      <div className="row featured" key={contrib}>
-      <Paper zDepth={1}>
-      <p className="text-indent">{contrib.name}</p>
+      <div className="newestCont" key={contrib}>
+      <Paper className="white-background"  zDepth={1}>
+      <div className="mui-font-style-display-4">{contrib.name}</div>
+      <div className="mui-font-style-headline">Newest Contributor</div>
+      <div className="mui-font-style-caption">${contrib.pledge}</div>
       </Paper>
-      </div>
+      </div> 
     )
   }
 });

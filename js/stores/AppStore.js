@@ -9,6 +9,7 @@ var assign = require('object-assign');
 var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
 var leaderBoard = [];
 var newestContrib = {};
+var totalContrib = 0;
 var State = {}
 var CHANGE_EVENT = 'change';  
 
@@ -20,16 +21,17 @@ var User = Immutable.Record({
 var users = Immutable.List();
                                    
 function toggleFire(info) {
-  
+  // set total contributed
+  totalContrib = totalContrib + info.pledge;
+
   // set newest contributor
   newestContrib = info;
   
   // add and sort the leaderboard
   var cont = leaderBoard;
   cont.push(info); 
-  var sorted = _.sortBy(cont, "name");
-  leaderBoard = sorted;
-  return leaderBoard 
+  var sorted = _.sortBy(cont, "pledge");
+  leaderBoard = sorted.reverse();
 }
 
 function toggleNav() {
@@ -43,8 +45,11 @@ var AppStore = assign({}, EventEmitter.prototype, {
   getLeaderBoard: function() {
     return leaderBoard;
   },
-  getnewestContrib: function() {
+  getNewestContrib: function() {
     return newestContrib;
+  },
+  getTotalContrib: function() {
+    return totalContrib;
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);

@@ -9,14 +9,16 @@ var NavComponent = require('./components/NavComponent');
 var LeftNavComponent = require('./components/LeftNavComponent');
 var TextComponent = require('./components/TextComponent');
 var TweetComponent = require('./components/TweetComponent');
+var FormComponent = require('./components/FormComponent');
 var ServerCall = require('./actions/ServerActions');
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin(); 
-
+ 
 function getAppState() {
   return {   
     leaderBoard: AppStore.getLeaderBoard(),
-    newestContrib: AppStore.getnewestContrib()
+    newestContrib: AppStore.getNewestContrib(),
+    totalContrib: AppStore.getTotalContrib()
   };
 } 
 
@@ -34,9 +36,9 @@ var Main = React.createClass({
   render: function() {
     return ( 
       <div>
+      <TweetComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} totalContrib={this.state.totalContrib} />
+      {/* <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/> */}
       <LeftNavComponent />
-      <TweetComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} />
-      <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/>
       </div>  
      );  
   }, 
