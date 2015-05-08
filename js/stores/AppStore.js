@@ -23,15 +23,17 @@ var users = Immutable.List();
 function toggleFire(info) {
   // set total contributed
   totalContrib = totalContrib + info.pledge;
+  console.log(info.pledge);
 
   // set newest contributor
-  newestContrib = info;
+  newestContrib = info; 
   
   // add and sort the leaderboard
   var cont = leaderBoard;
   cont.push(info); 
   var sorted = _.sortBy(cont, "pledge");
-  leaderBoard = sorted.reverse();
+  var reversed = sorted.reverse();
+  leaderBoard = reversed.slice(0,10);
 }
 
 function toggleNav() {
@@ -79,7 +81,6 @@ AppDispatcher.register(function(action) {
       break;
     case AppConstants.USER_INFO:
       var info = action.info;
-
       toggleFire(info);
       AppStore.emitChange();
       break;

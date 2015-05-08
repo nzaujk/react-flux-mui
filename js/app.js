@@ -13,7 +13,7 @@ var FormComponent = require('./components/FormComponent');
 var ServerCall = require('./actions/ServerActions');
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin(); 
- 
+  
 function getAppState() {
   return {   
     leaderBoard: AppStore.getLeaderBoard(),

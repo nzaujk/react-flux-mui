@@ -4,10 +4,14 @@ var PaperComponent = require('./PaperComponent');
 var NewestContributor = require('./NewestContributor');
 var FormComponent = require('./FormComponent');
 var TotalContrib = require('./TotalContrib');
+var LoadingIcon = require('./LoadingIcon');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 
-
+var isLoading = true;
+function toggleLoader(){
+  isLoading = false;
+}
 
 var TweetComponent = React.createClass({
   propTypes: {
@@ -23,8 +27,15 @@ var TweetComponent = React.createClass({
     var tweets = [];
     var contr = [] 
     var totalCont = []
+    var icon = []
+    var coolDown = 200;
     
-
+    if(isLoading){
+      icon.push( <LoadingIcon />);
+    } else {
+         icon = []
+                }
+    
     if(totalCont != null){
       totalCont.push(<TotalContrib key={totalContrib} totalContrib={totalContrib} />);
     }
@@ -34,21 +45,22 @@ var TweetComponent = React.createClass({
     }
                  
     for(var i in allTweets){
-      tweets.push(<PaperComponent key={i} thisTweet={allTweets[i]} />);
+      tweets.push(<React.addons.TransitionGroup>
+                  <PaperComponent isLoading={toggleLoader} coolDown={coolDown} key={allTweets[i].key} thisTweet={allTweets[i]} />
+                  </React.addons.TransitionGroup> );
+      coolDown = coolDown + 100;
     }
      
     return (
       <div className="row">
 
-      <div className="col-md-8">
-                  
+      <div className="col-md-8">       
         <div className="row">
         <div className="col-md-12">
           {totalCont}
-        </div>
-                  
+        </div>        
        </div>
-                  
+                   
        <div className="row">
         <div className="col-md-6">
           {contr}
@@ -58,19 +70,21 @@ var TweetComponent = React.createClass({
         </div>
        </div>
                   
-        <div className="row">
+      <div className="row">
         <div className="col-md-6">
           <FormComponent />
-        </div>
-                  
-       </div>
-                  
-      </div>
-                  
-                  
+          </div>        
+      </div>         
+      </div>                   
       <div className="col-md-4">
-                  {tweets}
- 
+        <div className="row leaderBoard">
+                <div className="mui-font-style-display-1">LeaderBoard</div>
+        </div>
+        <div className="row leaderBoard">
+                  {icon}
+        </div>
+        {tweets}
+                  
        </div>
     </div>
     );
