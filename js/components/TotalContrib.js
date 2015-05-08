@@ -23,4 +23,4 @@ var TotalContrib = React.createClass({
 });
 
 
-module.exports = TotalContrib;
+module.exports = TotalContrib; 

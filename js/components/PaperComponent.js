@@ -13,18 +13,15 @@ var PaperComponent = React.createClass({
     coolDown: ReactPropTypes.number.isRequired
   },
   componentWillAppear: function(callback) {
-    console.log("componentWillAppear");
     this._animateIn(callback);
     this.props.isLoading();
   },
   
   componentWillEnter: function(callback) {
-    console.log("componentWillEnter");
     this._animateIn(callback);
   },
   
   componentWillLeave: function(callback) {
-    console.log("componentWillLeave");
     this._animateOut(callback);
   },
   
@@ -32,7 +29,6 @@ var PaperComponent = React.createClass({
     var el = React.findDOMNode(this);
     TweenLite.set(el, {opacity: 0});
     setTimeout(function() {
-      console.log("timed in");
       TweenLite.to(el, 1, {opacity: 1}).play().eventCallback("onComplete", callback);
     }, this.props.coolDown); 
   },
@@ -40,7 +36,6 @@ var PaperComponent = React.createClass({
   _animateOut(callback) {
     var el = React.findDOMNode(this);
     setTimeout(function() {
-      console.log("timed out");
       TweenLite.to(el, 1, {opacity: 0}).play().eventCallback("onComplete", callback);
     }, 200);
   },

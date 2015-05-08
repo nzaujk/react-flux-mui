@@ -8,6 +8,8 @@ var LoadingIcon = require('./LoadingIcon');
 var mui = require('material-ui');
 var Paper = mui.Paper;
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var isLoading = true;
 function toggleLoader(){
   isLoading = false;
@@ -36,12 +38,14 @@ var TweetComponent = React.createClass({
          icon = []
                 }
     
-    if(totalCont != null){
-      totalCont.push(<TotalContrib key={totalContrib} totalContrib={totalContrib} />);
+    if(totalCont){
+      totalCont = <TotalContrib key={totalContrib} totalContrib={totalContrib} />;
     }
-                 
-    if(thisContrib != null){
-      contr.push(<NewestContributor key={thisContrib} thisContrib={thisContrib} />);
+           
+    if(thisContrib){
+      contr = <React.addons.TransitionGroup>
+                 <NewestContributor key={thisContrib.key} thisContrib={thisContrib} />
+                 </React.addons.TransitionGroup>;
     }
                  
     for(var i in allTweets){

@@ -8,7 +8,7 @@ var assign = require('object-assign');
 
 var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
 var leaderBoard = [];
-var newestContrib = {};
+var newestContrib;
 var totalContrib = 0;
 var State = {}
 var CHANGE_EVENT = 'change';  
@@ -21,10 +21,8 @@ var User = Immutable.Record({
 var users = Immutable.List();
                                    
 function toggleFire(info) {
-  // set total contributed
+  
   totalContrib = totalContrib + info.pledge;
-  console.log(info.pledge);
-
   // set newest contributor
   newestContrib = info; 
   
