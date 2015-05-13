@@ -8,6 +8,15 @@ call: function() {
     var info = dataSnapshot.val()
     AppActions.updateUsers(info);
 });
+},
+post: function(name, pledge) {
+  firebaseRef.push({
+    name: name,
+    pledge: pledge
+  });
+  }
+}
+    
   
 //  firebaseRef.on("child_added", function(dataSnapshot) {
 //    var res = dataSnapshot.val()
@@ -15,8 +24,8 @@ call: function() {
 //    var info = {name: dataSnapshot.val().name, pledge: dataSnapshot.val().pledge, key: dataSnapshot.key()}
 //    AppActions.updateUsers(info);
 //});
-  }
-}
+
+
 
 
 ////var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/users");

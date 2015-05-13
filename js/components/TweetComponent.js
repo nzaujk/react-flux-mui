@@ -19,7 +19,7 @@ function toggleLoader(){
   isLoading = false;
 }
 
-var TweetComponent = React.createClass({
+var CompComponent = React.createClass({
   propTypes: {
     allTweets: ReactPropTypes.array.isRequired,
     thisContrib: ReactPropTypes.object.isRequired,
@@ -38,11 +38,14 @@ var TweetComponent = React.createClass({
     var totalCont = []
     var icon = []
     var coolDown = 200;
+    var form = [];
     
     if(isLoading){
       icon.push( <LoadingIcon />);
+      form = [];
     } else {
-         icon = []
+        icon = []
+        form = <FormComponent />;
                 }
     
     if(totalCont){
@@ -87,10 +90,15 @@ var TweetComponent = React.createClass({
         </div>
        </div> 
                   
+                  
+       <div className="row">
+                  <div className="col-md-12">
+          <div className="mui-font-style-display-1">make a pledge</div>
+                  </div>
+        </div>
       <div className="row">
-        <div className="col-md-6">
-          <FormComponent />
-                   <DialogComponent />
+        <div className="col-md-12">
+          {form}
           </div>        
       </div>         
       </div>                   
@@ -110,4 +118,4 @@ var TweetComponent = React.createClass({
 });
 
 
-module.exports = TweetComponent;
+module.exports = CompComponent;

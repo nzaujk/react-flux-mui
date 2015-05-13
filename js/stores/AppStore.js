@@ -6,7 +6,7 @@ var Firebase = require('firebase')
 var AppConstants = require('../constants/AppConstants');
 var assign = require('object-assign');
 
-var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
+var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/users");
 var leaderBoard = [];
 var newestContrib;
 var highestContrib;

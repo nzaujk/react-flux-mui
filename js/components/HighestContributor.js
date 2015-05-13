@@ -42,7 +42,7 @@ var HighestContributor = React.createClass({
       <div className="newestCont" key={contrib}>
       <Paper className="white-background"  zDepth={1}>
       <div className="mui-font-style-headline">{contrib.name}</div>
-      <div className="mui-font-style-subhead-1">Newest Contributor</div>
+      <div className="mui-font-style-subhead-1">Highest Contributor</div>
       <div className="mui-font-style-caption">${pledge}</div>
       </Paper>
       </div> 

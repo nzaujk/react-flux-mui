@@ -16,6 +16,15 @@ var AppActions = {
       actionType: AppConstants.USER_INFO,
       info: i
     });
+  },
+  submitPledge: function(n,p) {
+    console.log(n);
+      console.log(p);
+    AppDispatcher.dispatch({
+      actionType: AppConstants.SUBMIT_PLEDGE,
+      name: n,
+      pledge: p
+    });
   }
 };
 

@@ -8,7 +8,7 @@ var RaisedButton = mui.RaisedButton;
 var NavComponent = require('./components/NavComponent');
 var LeftNavComponent = require('./components/LeftNavComponent');
 var TextComponent = require('./components/TextComponent');
-var TweetComponent = require('./components/TweetComponent');
+var CompComponent = require('./components/TweetComponent');
 var FormComponent = require('./components/FormComponent');
 var ServerCall = require('./actions/ServerActions');
 var injectTapEventPlugin = require("react-tap-event-plugin");
@@ -38,7 +38,7 @@ var Main = React.createClass({
   render: function() {
     return ( 
       <div>
-      <TweetComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} highContrib={this.state.highContrib} totalContrib={this.state.totalContrib} />
+      <CompComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} highContrib={this.state.highContrib} totalContrib={this.state.totalContrib} />
       {/* <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/> */}
       {/* <LeftNavComponent />*/}
       </div>  
