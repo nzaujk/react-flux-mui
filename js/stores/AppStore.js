@@ -9,6 +9,7 @@ var assign = require('object-assign');
 var firebaseRef = new Firebase("https://welcometotheyep.firebaseio.com/");
 var leaderBoard = [];
 var newestContrib;
+var highestContrib;
 var totalContrib = 0;
 var State = {}
 var CHANGE_EVENT = 'change';  
@@ -32,6 +33,7 @@ function toggleFire(info) {
   var sorted = _.sortBy(cont, "pledge");
   var reversed = sorted.reverse();
   leaderBoard = reversed.slice(0,10);
+  highestContrib = leaderBoard[0];
 }
 
 function toggleNav() {
@@ -50,6 +52,9 @@ var AppStore = assign({}, EventEmitter.prototype, {
   },
   getTotalContrib: function() {
     return totalContrib;
+  },
+  getHighestContrib: function() {
+    return highestContrib;
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);

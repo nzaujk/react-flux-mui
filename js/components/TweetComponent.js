@@ -1,10 +1,14 @@
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
+
 var PaperComponent = require('./PaperComponent');
 var NewestContributor = require('./NewestContributor');
+var HighestContributor = require('./HighestContributor');
 var FormComponent = require('./FormComponent');
+var DialogComponent = require('./DialogComponent');
 var TotalContrib = require('./TotalContrib');
 var LoadingIcon = require('./LoadingIcon');
+
 var mui = require('material-ui');
 var Paper = mui.Paper;
 
@@ -19,15 +23,18 @@ var TweetComponent = React.createClass({
   propTypes: {
     allTweets: ReactPropTypes.array.isRequired,
     thisContrib: ReactPropTypes.object.isRequired,
+    highContrib: ReactPropTypes.object.isRequired,
     totalContrib: ReactPropTypes.number.isRequired
   },
   render: function() {  
     var allTweets = this.props.allTweets;
     var thisContrib = this.props.thisContrib;
+    var highContrib = this.props.highContrib;
     var totalContrib = this.props.totalContrib;
     
     var tweets = [];
     var contr = [] 
+    var highContr = [] 
     var totalCont = []
     var icon = []
     var coolDown = 200;
@@ -45,6 +52,12 @@ var TweetComponent = React.createClass({
     if(thisContrib){
       contr = <React.addons.TransitionGroup>
                  <NewestContributor key={thisContrib.key} thisContrib={thisContrib} />
+                 </React.addons.TransitionGroup>;
+    }
+    
+    if(highContrib){
+      highContr = <React.addons.TransitionGroup>
+                 <HighestContributor key={highContrib.key} highContrib={highContrib} />
                  </React.addons.TransitionGroup>;
     }
                  
@@ -70,13 +83,14 @@ var TweetComponent = React.createClass({
           {contr}
         </div>
         <div className="col-md-6">
-          {contr}
+          {highContr}
         </div>
-       </div>
+       </div> 
                   
       <div className="row">
         <div className="col-md-6">
           <FormComponent />
+                   <DialogComponent />
           </div>        
       </div>         
       </div>                   

@@ -5,9 +5,9 @@ var mui = require('material-ui');
 var Paper = mui.Paper;
 
 
-var NewestContributor = React.createClass({
+var HighestContributor = React.createClass({
   propTypes: {
-    thisContrib: ReactPropTypes.object.isRequired
+    highContrib: ReactPropTypes.object.isRequired
   },
   componentWillAppear: function(callback) {
     this._animateIn(callback);
@@ -19,7 +19,7 @@ var NewestContributor = React.createClass({
   
   componentWillLeave: function(callback) {
     this._animateOut(callback);
-  },
+  }, 
   
   _animateIn(callback) {
     var el = React.findDOMNode(this);
@@ -30,14 +30,14 @@ var NewestContributor = React.createClass({
   },
   
   _animateOut(callback) {
-    var el = React.findDOMNode(this);
+    var el = React.findDOMNode(this); 
     setTimeout(function() {
       TweenLite.to(el, 1, {opacity: 0}).play().eventCallback("onComplete", callback);
     }, 200);
   },
   render: function() {  
-    var contrib = this.props.thisContrib;
-    var pledge = Number(this.props.thisContrib.pledge).toFixed(2); 
+    var contrib = this.props.highContrib;
+    var pledge = Number(this.props.highContrib.pledge).toFixed(2); 
     return (
       <div className="newestCont" key={contrib}>
       <Paper className="white-background"  zDepth={1}>
@@ -51,4 +51,4 @@ var NewestContributor = React.createClass({
 });
 
 
-module.exports = NewestContributor;
+module.exports = HighestContributor;

@@ -18,9 +18,11 @@ function getAppState() {
   return {   
     leaderBoard: AppStore.getLeaderBoard(),
     newestContrib: AppStore.getNewestContrib(),
+    highContrib: AppStore.getHighestContrib(),
     totalContrib: AppStore.getTotalContrib()
+    
   };
-} 
+}  
 
 var Main = React.createClass({
   getInitialState: function() {
@@ -36,9 +38,9 @@ var Main = React.createClass({
   render: function() {
     return ( 
       <div>
-      <TweetComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} totalContrib={this.state.totalContrib} />
+      <TweetComponent allTweets={this.state.leaderBoard} thisContrib={this.state.newestContrib} highContrib={this.state.highContrib} totalContrib={this.state.totalContrib} />
       {/* <RaisedButton label="Toggle Docked Left Nav" onClick={this._onDestroyClick}/> */}
-      <LeftNavComponent />
+      {/* <LeftNavComponent />*/}
       </div>  
      );  
   }, 
