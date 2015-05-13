@@ -12,12 +12,12 @@ var FormComponent = React.createClass({
       <div className="newestCont">
                 <div className="row">
                   <div className="col-md-12">
-          <TextField hintText="Name" onChange={this._handleNameChange} />
+          <TextField hintText="Name" floatingLabelText="Name" onChange={this._handleNameChange} />
                   </div>
               </div>
               <div className="row">
                 <div className="col-md-12">
-                  <TextField hintText="Pledge" onChange={this._handlePledgeChange} />
+                  <TextField hintText="Pledge Amount" floatingLabelText="Pledge Amount" onChange={this._handlePledgeChange} />
                </div>
               </div>
               <div className="row">
@@ -26,7 +26,7 @@ var FormComponent = React.createClass({
                </div>
               </div>
       </div>
-    ); 
+    );  
   },
    _handleNameChange: function() {
     this.props.name = event.target.value;

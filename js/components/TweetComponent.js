@@ -39,13 +39,14 @@ var CompComponent = React.createClass({
     var icon = []
     var coolDown = 200;
     var form = [];
+    var pledgeText = [];
     
     if(isLoading){
       icon.push( <LoadingIcon />);
-      form = [];
     } else {
         icon = []
         form = <FormComponent />;
+        pledgeText = <div className="text-center mui-font-style-display-1">make a pledge</div>;
                 }
     
     if(totalCont){
@@ -93,7 +94,8 @@ var CompComponent = React.createClass({
                   
        <div className="row">
                   <div className="col-md-12">
-          <div className="mui-font-style-display-1">make a pledge</div>
+                  <div className="divider"></div>
+                  {pledgeText}
                   </div>
         </div>
       <div className="row">
