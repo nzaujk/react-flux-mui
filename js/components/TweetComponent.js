@@ -102,9 +102,9 @@ var CompComponent = React.createClass({
         <div className="col-md-12">
           {form}
           </div>        
-      </div>         
+      </div>  
       </div>                   
-      <div className="col-md-4">
+      <div className="col-md-4 hidden-xs hidden-sm"> 
         <div className="row leaderBoard">
                 <div className="mui-font-style-display-1">LeaderBoard</div>
         </div>
